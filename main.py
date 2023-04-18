@@ -28,14 +28,14 @@ def compute_num_levels(image: np.ndarray):
 
 
 if __name__ == "__main__":
-    target = read_image("_sample_input_left.jpg")
-    source = read_image("_sample_input_right.jpg")
-    mask = read_mask("_sample_input_mask.jpg")
+    target = read_image("target.jpg")
+    source = read_image("source.jpg")
+    mask = read_mask("mask.jpg")
 
     blender = blending.MultiBandBlending(num_levels=compute_num_levels(target))
     composite = blender(target, source, mask)
-    write_image(composite, "_sample_output_multiband.jpg")
+    write_image(composite, "multiband.jpg")
 
     blender = blending.NaiveBlending()
     composite = blender(target, source, mask)
-    write_image(composite, "_sample_output_naive.jpg")
+    write_image(composite, "naive.jpg")
