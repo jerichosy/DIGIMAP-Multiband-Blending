@@ -49,7 +49,7 @@ class MultiBandBlending(Blending):
         # Hint: The pyramid goes smaller the higher the index (pyramid[0] is bigger than pyramid[1], large->small)
         # Hint: Replace 'None' with the correct expression
 
-        # Sources: https://github.com/cynricfu/multi-band-blending/blob/master/multi_band_blending.py
+        # Source: https://github.com/cynricfu/multi-band-blending/blob/master/multi_band_blending.py
 
         pyramid = []
         current = image.copy()
@@ -72,17 +72,20 @@ class MultiBandBlending(Blending):
 
         composites = []
         for target, source, mask in zip(target_pyramid, source_pyramid, mask_pyramid):
-            composite = target * (1 - mask) + source * mask  # Hint: Replace this line with the appropriate expression 
+            composite = target * (1 - mask) + source * mask  # (Done) Hint: Replace this line with the appropriate expression 
             composites.append(composite)
         return composites
 
     def reconstruct(self, pyramid: typing.List[np.ndarray]) -> np.ndarray:
         # SCORE +1: Combine the different levels of the pyramid to generate one image
         # Hint: Use cv2.pyrUp
+
+        # Source: https://github.com/cynricfu/multi-band-blending/blob/master/multi_band_blending.py
+
         pyramid = pyramid[::-1]  # invert from (large->small) to (small->large)
         image = pyramid[0]
         for feature in pyramid[1:]:
-            image = cv2.pyrUp(image, feature.shape[1::-1])# Hint: Replace this line with the appropriate expression
+            image = cv2.pyrUp(image, feature.shape[1::-1])  # (Done) Hint: Replace this line with the appropriate expression
             image += feature
         return image
 
