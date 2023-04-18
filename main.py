@@ -34,8 +34,8 @@ if __name__ == "__main__":
 
     blender = blending.MultiBandBlending(num_levels=compute_num_levels(target))
     composite = blender(target, source, mask)
-    write_image(composite, ".output_multiband.jpg")
+    write_image(composite, "_sample_output_multiband.jpg")
 
     blender = blending.NaiveBlending()
     composite = blender(target, source, mask)
-    write_image(composite, ".output_naive.jpg")
+    write_image(composite, "_sample_output_naive.jpg")
