@@ -101,7 +101,7 @@ class MultiBandBlending(Blending):
     def join_channels(self, channels: typing.List[np.ndarray]) -> np.ndarray:
         # SCORE +1: Combine the split channels to a single image of shape (H, W, C)
         # Hint: Use np.stack
-        return np.stack(channels)
+        return np.stack(channels, axis=-1)
 
     def blend_channel(self, target: np.ndarray, source: np.ndarray, mask: np.ndarray):
         assert target.ndim == 2
