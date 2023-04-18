@@ -75,7 +75,7 @@ class MultiBandBlending(Blending):
         pyramid = pyramid[::-1]  # invert from (large->small) to (small->large)
         image = pyramid[0]
         for feature in pyramid[1:]:
-            image = None  # Hint: Replace this line with the appropriate expression
+            image = cv2.pyrUp(image, feature.shape[1::-1])# Hint: Replace this line with the appropriate expression
             image += feature
         return image
 
