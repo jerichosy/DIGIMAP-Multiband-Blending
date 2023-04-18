@@ -36,9 +36,13 @@ class MultiBandBlending(Blending):
         # Hint: use cv2.pyrDown
         # Hint: The pyramid goes smaller the higher the index (pyramid[0] is bigger than pyramid[1], large->small)
 
+        #Create a gaussian pyramid with cv2.pyrDown
+        #Create a copy of the image
+        img = image.copy()
         pyramid = []
         for i in range(self.num_levels - 1):
-            continue  # Hint: Replace this line with the appropriate expression
+            img = cv2.pyrDown(img)
+            pyramid.append(img)
 
         return pyramid
 
