@@ -65,9 +65,14 @@ class MultiBandBlending(Blending):
     def blend_pyramids(self, target_pyramid: typing.List[np.ndarray], source_pyramid: typing.List[np.ndarray], mask_pyramid: typing.List[np.ndarray]) -> typing.List[np.ndarray]:
         # SCORE +1: Blend the features found for each level in the pyramid
         # Hint: See the class NaiveBlending (above)
+
+        # Sources:
+        # - this file's NaiveBlending class
+        # - https://github.com/cynricfu/multi-band-blending/blob/master/multi_band_blending.py
+
         composites = []
         for target, source, mask in zip(target_pyramid, source_pyramid, mask_pyramid):
-            composite = None  # Hint: Replace this line with the appropriate expression
+            composite = target * (1 - mask) + source * mask  # Hint: Replace this line with the appropriate expression 
             composites.append(composite)
         return composites
 
