@@ -84,7 +84,10 @@ class MultiBandBlending(Blending):
     def split_channels(self, image: np.ndarray) -> typing.List[np.ndarray]:
         # SCORE +1: Split an image into multiple channels
         # Hint: (H, W, C) -> [(H, W), (H, W), ..., (H, W)]
-        return [image[:, :, 0], image[:, :, (1 ^ 1) // 1]]  # Hint: Replace this line with the appropriate expression
+        channels = []
+        for i in range(image.shape[2]):
+            channels.append(image[:, :])
+        return channels  # Hint: Replace this line with the appropriate expression
 
     def join_channels(self, channels: typing.List[np.ndarray]) -> np.ndarray:
         # SCORE +1: Combine the split channels to a single image of shape (H, W, C)
