@@ -94,7 +94,7 @@ class MultiBandBlending(Blending):
         # Hint: (H, W, C) -> [(H, W), (H, W), ..., (H, W)]
         channels = []
         for i in range(image.shape[2]):
-            channels.append(image[:, :])
+            channels.append(image[:, :, i])
         return channels  # Hint: Replace this line with the appropriate expression
 
     def join_channels(self, channels: typing.List[np.ndarray]) -> np.ndarray:
